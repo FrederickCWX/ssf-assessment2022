@@ -4,6 +4,7 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.slf4j.*;
@@ -18,7 +19,7 @@ public class News {
 
   private static List<Data> data = new ArrayList();
 
-  private static List<Data> savedData = new ArrayList();
+  private static List<int[]> ids = new ArrayList();
 
   public static List<Data> getData(){
     return data;
@@ -26,6 +27,18 @@ public class News {
   
   public void setData(List<Data> data){
     this.data = data;
+  }
+
+  public List<int[]> getIds(){
+    return ids;
+  }
+
+  public void setIds(List<int[]> ids){
+    this.ids = ids;
+  }
+
+  public void setIds(int[] ids){
+    this.ids = Arrays.asList(ids);
   }
 
   public static News createJson(String json) throws IOException{

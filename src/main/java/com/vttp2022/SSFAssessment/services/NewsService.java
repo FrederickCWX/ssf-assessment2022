@@ -1,5 +1,6 @@
 package com.vttp2022.SSFAssessment.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.slf4j.*;
@@ -10,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import com.vttp2022.SSFAssessment.models.Data;
 import com.vttp2022.SSFAssessment.models.News;
 
 @Service
@@ -40,8 +42,10 @@ public class NewsService {
     return null;
   }
 
-  public void saveArticles(){
+  public List<Data> saveArticles(){
+    List<Data> savedArticles = null;
     
+    return savedArticles;
   }
   
 }

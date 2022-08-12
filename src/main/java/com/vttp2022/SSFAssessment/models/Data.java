@@ -1,7 +1,9 @@
 package com.vttp2022.SSFAssessment.models;
 
 import org.slf4j.*;
+import org.springframework.stereotype.Service;
 
+import io.lettuce.core.output.BooleanOutput;
 import jakarta.json.JsonNumber;
 import jakarta.json.JsonObject;
 import jakarta.json.JsonString;
@@ -18,16 +20,18 @@ public class Data {
   private String tags;
   private String categories;
 
+  private boolean saveStatus = false;
+
   public String getId() {
     return id;
   }
   public void setId(String id) {
     this.id = id;
   }
-  public int getPublished_on() {
+  public int getPublishedOn() {
     return publishedOn;
   }
-  public void setPublished_on(int publishedOn) {
+  public void setPublishedOn(int publishedOn) {
     this.publishedOn = publishedOn;
   }
   public String getTitle() {
@@ -65,6 +69,14 @@ public class Data {
   }
   public void setCategories(String categories) {
     this.categories = categories;
+  }
+
+  public boolean getSaveStatus(){
+    return saveStatus;
+  }
+
+  public void setSaveStatus(boolean saveStatus){
+    this.saveStatus = saveStatus;
   }
 
   public static Data createJson(JsonObject jo){

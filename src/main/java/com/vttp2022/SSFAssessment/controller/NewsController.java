@@ -22,17 +22,18 @@ public class NewsController {
   @Autowired
   private NewsService newsSvc;
 
+
   @GetMapping("/")
   public String newsPage(Model model){
     News news = new News();
     News optNews = newsSvc.getArticles();
-
+    /*
     if(optNews == null){
       model.addAttribute("news", new News());
       return "news";
     }
+    */
     List<Data> datas = News.getData();
-    model.addAttribute("news", news);
     model.addAttribute("datas", datas);
 
     return "news";
@@ -40,8 +41,12 @@ public class NewsController {
   }
 
   @PostMapping("/articles")
-  public String saveNews(@ModelAttribute("news") News news){
-    logger.info("Saved news saved");
+  public String saveNews(Model model, @ModelAttribute("requestedIds") int[] ids){
+    //logger.info("Saved news saved");
+    News news = new News();
+    News optNews = newsSvc.getArticles();
+    List<Data> datas = News.getData();
+    model.addAttribute("datas", datas);
     return "news";
   }
 

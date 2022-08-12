@@ -19,7 +19,9 @@
       th:object="${news}"
       method="post"
       >-->
-      <button type="submit">Save</button>
+      <!--<button type="submit">Save</button>-->
+      <form method="post" th:action="@{/articles}">
+      <button class="btn btn-primary show-selected">Save</button>
       <table th:each="data : *{datas}">
         <tr>
             <td rowspan="8"><img th:src= "${data.imageUrl}" width=200 height=140/></td>
@@ -43,12 +45,14 @@
           <td colspan="3">Tags: <span th:text="${data.tags}"></span></td>
         </tr>
         <tr>
-          <!--<td>Published: <span data-th-text="${data.publishedOn}"></span></td>-->
-          <td><br></td>
+          <td>Published: <span th:text="${data.publishedOn}"></span></td>
+          <!--<td><br></td>-->
           <td><a href="${data.url}">Link</a></td>
 
             <td>
-              <!--<input type="checkbox" th:field="*{savedData}" th:value="${data.id}" />--> Save
+              <input type="checkbox" name="requestedId" data-target="request-all" 
+                   th:value="${data.id}"/> Save
+              <!--<input type="checkbox" name="saveStatus" th:checked="${data.saveStatus}" /> Save -->
             </td>
         </tr>
         <tr>
@@ -57,7 +61,7 @@
             <td><br/></td>
         </tr>
       </table>
-      <!--</form>-->
+      </form>
         
     </div>
 </div>

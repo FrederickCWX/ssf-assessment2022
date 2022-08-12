@@ -27,8 +27,8 @@ public class RedisConfig {
   @Value("${spring.redis.port}")
   private Optional<Integer> redisPort;
 
-  @Value("${spring.redis.password}")
-  private String redisPassword;
+  //@Value("${spring.redis.password}")
+  //private String redisPassword;
 
   @Value("${spring.redis.database}")
   private String redisDatabase;
@@ -39,7 +39,7 @@ public class RedisConfig {
     final RedisStandaloneConfiguration config = new RedisStandaloneConfiguration();
     config.setHostName(redisHost);
     config.setPort(redisPort.get());
-    config.setPassword(redisPassword);
+    config.setPassword(System.getenv("CRYPTOCOMPARE_NEWS_REDIS_PASSWORD"));
     Jackson2JsonRedisSerializer jackson2JsonRedisSerializer = new Jackson2JsonRedisSerializer(Data.class);
 
     final JedisClientConfiguration jedisCli = JedisClientConfiguration.builder().build();
