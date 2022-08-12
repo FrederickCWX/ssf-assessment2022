@@ -18,6 +18,8 @@ public class News {
 
   private static List<Data> data = new ArrayList();
 
+  private static List<Data> savedData = new ArrayList();
+
   public static List<Data> getData(){
     return data;
   }

@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import com.vttp2022.SSFAssessment.models.News;
 import com.vttp2022.SSFAssessment.models.Data;
@@ -22,17 +24,27 @@ public class NewsController {
 
   @GetMapping("/")
   public String newsPage(Model model){
-    Optional<News> optNews = newsSvc.getArticles();
+    News news = new News();
+    News optNews = newsSvc.getArticles();
 
-    if(optNews.isEmpty()){
+    if(optNews == null){
       model.addAttribute("news", new News());
       return "news";
     }
     List<Data> datas = News.getData();
+    model.addAttribute("news", news);
     model.addAttribute("datas", datas);
 
     return "news";
 
   }
+
+  @PostMapping("/articles")
+  public String saveNews(@ModelAttribute("news") News news){
+    logger.info("Saved news saved");
+    return "news";
+  }
+
+  
   
 }

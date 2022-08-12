@@ -18,7 +18,7 @@ public class NewsService {
 
   private static String URL = "https://min-api.cryptocompare.com/data/v2/news/?lang=EN";
 
-  public Optional<News> getArticles(){
+  public News getArticles(){
     String apiKey = System.getenv("CRYPTOCOMPARE_NEWS_API_KEY");
 
     RestTemplate temp = new RestTemplate();
@@ -32,12 +32,16 @@ public class NewsService {
       resp = temp.exchange(URL, HttpMethod.GET, request, String.class, 1);
 
       News n = News.createJson(resp.getBody());
-      return Optional.of(n);
+      return n;
     }catch(Exception e){
       logger.error(e.getMessage());
       e.printStackTrace();
     }
-    return Optional.empty();
+    return null;
+  }
+
+  public void saveArticles(){
+    
   }
   
 }

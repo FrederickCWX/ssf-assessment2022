@@ -8,48 +8,57 @@
 </head>
 <body>
   <h1>Crypto News of the Day</h1>
-  <b><a th:href="@{/}"><button>Save</button></a
-    >
-  </b>
-  <div class="row">
-    <div class="col">
-        <table th:each="data : *{datas}">
-            <tr>
-                <td rowspan="8"><img th:src= "${data.imageUrl}" width=200 height=140/></td>
-                <td rowspan="8">&nbsp</td>
-                <td rowspan="8">&nbsp</td>
-                <td rowspan="8">&nbsp</td>
-                <td rowspan="8">&nbsp</td>
-                
-                <td colspan="3">Id: <span th:text="${data.id}"></span></td>
-            </tr>
-            <tr>
-                <td colspan="3"><span th:text="${data.title}"></span></td>
-            </tr>
-            <tr>
-                <td colspan="3"><span th:text="${data.body}"></span></td>
-            </tr>
-            <tr>
-                <td colspan="3">Categories: <span th:text="${data.categories}"></span></td>
-            </tr>
-            <tr>
-              <td colspan="3">Tags: <span th:text="${data.tags}"></span></td>
-            </tr>
-            <tr>
-              <!--<td>Published: <span th:text="${#numbers.data.publishedOn}"></span></td>-->
-              <td><br></td>
-              <td><a href="${data.url}">Link</a></td>
+  <!--<b><a th:href="@{/}"><button>Save</button></a>
+  </b>-->
+  <div>
+    <div>
+      <!--
+      <form
+      action="#"
+      th:action="@{/articles}"
+      th:object="${news}"
+      method="post"
+      >-->
+      <button type="submit">Save</button>
+      <table th:each="data : *{datas}">
+        <tr>
+            <td rowspan="8"><img th:src= "${data.imageUrl}" width=200 height=140/></td>
+            <td rowspan="8">&nbsp</td>
+            <td rowspan="8">&nbsp</td>
+            <td rowspan="8">&nbsp</td>
+            <td rowspan="8">&nbsp</td>
+            
+            <td colspan="3">Id: <span th:text="${data.id}"></span></td>
+        </tr>
+        <tr>
+            <td colspan="3"><span th:text="${data.title}"></span></td>
+        </tr>
+        <tr>
+            <td colspan="3"><span th:text="${data.body}"></span></td>
+        </tr>
+        <tr>
+            <td colspan="3">Categories: <span th:text="${data.categories}"></span></td>
+        </tr>
+        <tr>
+          <td colspan="3">Tags: <span th:text="${data.tags}"></span></td>
+        </tr>
+        <tr>
+          <!--<td>Published: <span data-th-text="${data.publishedOn}"></span></td>-->
+          <td><br></td>
+          <td><a href="${data.url}">Link</a></td>
 
-                <td>
-                  <input type="checkbox" name="save" th:checked="${data.saveStatus}" /> Save
-                </td>
-            </tr>
-            <tr>
-                <td><br/></td>
-                <td><br/></td>
-                <td><br/></td>
-            </tr>
-        </table>
+            <td>
+              <!--<input type="checkbox" th:field="*{savedData}" th:value="${data.id}" />--> Save
+            </td>
+        </tr>
+        <tr>
+            <td><br/></td>
+            <td><br/></td>
+            <td><br/></td>
+        </tr>
+      </table>
+      <!--</form>-->
+        
     </div>
 </div>
   

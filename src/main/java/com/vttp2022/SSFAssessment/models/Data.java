@@ -10,7 +10,7 @@ public class Data {
   private static final Logger logger = LoggerFactory.getLogger(Data.class);
 
   private String id;
-  private long publishedOn;
+  private int publishedOn;
   private String title;
   private String url;
   private String imageUrl;
@@ -18,18 +18,16 @@ public class Data {
   private String tags;
   private String categories;
 
-  private boolean saveStatus = false;
-
   public String getId() {
     return id;
   }
   public void setId(String id) {
     this.id = id;
   }
-  public long getPublished_on() {
+  public int getPublished_on() {
     return publishedOn;
   }
-  public void setPublished_on(long publishedOn) {
+  public void setPublished_on(int publishedOn) {
     this.publishedOn = publishedOn;
   }
   public String getTitle() {
@@ -68,12 +66,6 @@ public class Data {
   public void setCategories(String categories) {
     this.categories = categories;
   }
-  public boolean getSaveStatus(){
-    return saveStatus;
-  }
-  public void setSaveStatus(boolean saveStatus){
-    this.saveStatus = saveStatus;
-  }
 
   public static Data createJson(JsonObject jo){
     Data d = new Data();
@@ -81,7 +73,7 @@ public class Data {
     JsonString jsId = jo.getJsonString("id");
     d.id = jsId.getString();
     JsonNumber jnPublishedOn = jo.getJsonNumber("published_on");
-    d.publishedOn = jnPublishedOn.longValue();
+    d.publishedOn = jnPublishedOn.intValue();
     
     JsonString jsTitle = jo.getJsonString("title");
     d.title = jsTitle.getString();
